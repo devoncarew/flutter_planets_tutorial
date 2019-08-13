@@ -47,9 +47,8 @@ class PlanetSummary extends StatelessWidget {
       );
     }
 
-
     final planetCardContent = new Container(
-      margin: new EdgeInsets.fromLTRB(horizontal ? 76.0 : 16.0, horizontal ? 16.0 : 42.0, 16.0, 16.0),
+      margin: new EdgeInsets.fromLTRB(horizontal ? 76.0 : 16.0, horizontal ? 16.0 : 42.0, 16.0, 15.0),
       constraints: new BoxConstraints.expand(),
       child: new Column(
         crossAxisAlignment: horizontal ? CrossAxisAlignment.start : CrossAxisAlignment.center,
