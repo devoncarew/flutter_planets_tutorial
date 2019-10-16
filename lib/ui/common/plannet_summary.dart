@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_planets_tutorial/model/planets.dart';
 import 'package:flutter_planets_tutorial/ui/common/separator.dart';
-import 'package:flutter_planets_tutorial/ui/detail/detail_page.dart';
 import 'package:flutter_planets_tutorial/ui/text_style.dart';
 
 class PlanetSummary extends StatelessWidget {
@@ -14,7 +13,21 @@ class PlanetSummary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final planetThumbnail = new Container(
+    //final String foo = "bottom";
+
+//    Widget widget = new MaterialApp(
+//      theme: ThemeData.dark(),
+//      home: Scaffold(
+//        floatingActionButton: FloatingActionButton(
+//          child: Icon(Icons.arrow_back),
+//          onPressed: () {
+//            print('Hello World');
+//          },
+//        ),
+//      ),
+//    );
+
+    final Container planetThumbnail = new Container(
       margin: new EdgeInsets.symmetric(vertical: 16.0),
       alignment:
           horizontal ? FractionalOffset.centerLeft : FractionalOffset.center,
@@ -48,7 +61,7 @@ class PlanetSummary extends StatelessWidget {
         children: <Widget>[
           new Container(height: 4.0),
           new Text(planet.name, style: Style.titleTextStyle),
-          new Container(height: 10.0),
+          Container(height: 10.0),
           new Text(planet.location, style: Style.commonTextStyle),
           new Separator(),
           new Row(
@@ -73,7 +86,7 @@ class PlanetSummary extends StatelessWidget {
       ),
     );
 
-    final planetCard = new Container(
+    final Container planetCard = new Container(
       child: planetCardContent,
       height: horizontal ? 124.0 : 154.0,
       margin: horizontal
@@ -94,27 +107,23 @@ class PlanetSummary extends StatelessWidget {
     );
 
     return new GestureDetector(
-        onTap: horizontal
-            ? () => Navigator.of(context).push(
-                  new PageRouteBuilder(
-                    pageBuilder: (_, __, ___) => new DetailPage(planet),
-                    transitionsBuilder: (context, animation, secondaryAnimation,
-                            child) =>
-                        new FadeTransition(opacity: animation, child: child),
-                  ),
-                )
-            : null,
-        child: new Container(
-          margin: const EdgeInsets.symmetric(
-            vertical: 16.0,
-            horizontal: 24.0,
-          ),
-          child: new Stack(
-            children: <Widget>[
-              planetCard,
-              planetThumbnail,
-            ],
-          ),
-        ));
+      onTap: horizontal
+          ? () => Navigator.of(context).pushNamed(
+                '/${planet.name.toLowerCase()}',
+              )
+          : null,
+      child: new Container(
+        margin: const EdgeInsets.symmetric(
+          vertical: 16.0,
+          horizontal: 24.0,
+        ),
+        child: new Stack(
+          children: <Widget>[
+            planetCard,
+            planetThumbnail,
+          ],
+        ),
+      ),
+    );
   }
 }

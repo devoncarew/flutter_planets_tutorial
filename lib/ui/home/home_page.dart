@@ -5,10 +5,12 @@ import 'home_page_body.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    //print('rebuilding...');
+
     return new Scaffold(
       body: new Column(
         children: <Widget>[
-          new GradientAppBar('treva_9'),
+          new GradientAppBar('treva_2'),
           new HomePageBody(),
         ],
       ),
